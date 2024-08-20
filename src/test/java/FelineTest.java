@@ -1,6 +1,8 @@
 import com.example.Feline;
 import org.junit.Test;
 import java.util.List;
+
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 public class FelineTest {
@@ -22,10 +24,18 @@ public class FelineTest {
 
 
     @Test
-    public void getKittensTest() {
+    public void getKittensDefaultIsCorrectTest() {
         Feline feline = new Feline();
-        int actual = feline.getKittens();
         int expected = 1;
-        assertEquals(expected, actual);
+        int actual = feline.getKittens();
+        assertEquals("Некорректное колличество котят", expected, actual);
+    }
+
+    @Test
+    public void getKittensInputCountIsCorrectTest(){
+        Feline feline = new Feline();
+        int expected = 5;
+        int actual = feline.getKittens(5);
+        assertEquals("Некорректное колличество котят", expected, actual);
     }
 }
